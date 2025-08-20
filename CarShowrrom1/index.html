@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Car Showroom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-brand i {
+            font-size: 2rem;
+            color: #ff6b6b;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: #4ecdc4;
+        }
+
+        .login-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .cars-section {
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .car-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .car-image {
+            height: 200px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.05);
+        }
+
+        .car-image i {
+            font-size: 4rem;
+            color: #6c757d;
+        }
+
+        .car-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .car-info {
+            padding: 0.5rem 0;
+        }
+
+        .car-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        .car-brand {
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .car-specs {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            color: #666;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .car-specs span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .car-specs i {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+        }
+
+        .car-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .search-section {
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            margin: 2rem;
+            border-radius: 16px;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .about-section {
+            padding: 4rem 2rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4ecdc4;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            width: 400px;
+            max-width: 90%;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #4ecdc4;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .status-message {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            margin: 2rem;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+
+            .cars-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .car-specs {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .car-specs span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-car"></i>
+                <span>Elite Cars</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#cars">Cars</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="login-btn" onclick="openLogin()">
+                <i class="fas fa-user"></i> Login
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Premium Car Collection</h1>
+        <p>Discover luxury vehicles that define excellence and performance</p>
+        <button class="btn btn-primary" onclick="scrollToCars()">
+            <i class="fas fa-car"></i>
+            Browse Cars
+        </button>
+    </section>
+
+    <div class="search-section">
+        <h3 style="color: white; text-align: center; margin-bottom: 1rem;">
+            <i class="fas fa-search"></i> Find Your Dream Car
+        </h3>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by brand, model, or price..." onkeyup="searchCars()">
+            <button onclick="searchCars()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">About Elite Cars</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                Welcome to Elite Cars, India's premier luxury automobile destination. Since 2010, we have been 
+                serving discerning customers with the finest collection of premium vehicles from world-renowned brands. 
+                Our showroom features the latest models with cutting-edge technology, exceptional performance, and 
+                unmatched luxury.
+            </p>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <p>Premium Cars Available</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <p>Luxury Brands</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10K+</div>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">14</div>
+                    <p>Years of Excellence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cars-section" id="cars">
+        <h2 class="section-title">Featured Vehicles</h2>
+        <div class="cars-grid" id="carsGrid">
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=400&h=250&fit=crop" alt="Tesla Model S" />
+                    <div class="car-badge">Featured</div>
+                </div>
+                <div class="car-info">
+                    <h3>Tesla Model S Plaid</h3>
+                    <p class="car-brand">Tesla</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-bolt"></i> Electric</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 1.99s 0-100</span>
+                    </div>
+                    <div class="car-price">₹1,08,00,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=250&fit=crop" alt="Mercedes AMG GT" />
+                    <div class="car-badge">Featured</div>
+                </div>
+                <div class="car-info">
+                    <h3>Mercedes AMG GT 63 S</h3>
+                    <p class="car-brand">Mercedes-Benz</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-gas-pump"></i> Petrol</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 3.1s 0-100</span>
+                    </div>
+                    <div class="car-price">₹1,33,00,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=250&fit=crop" alt="BMW M8" />
+                </div>
+                <div class="car-info">
+                    <h3>BMW M8 Competition</h3>
+                    <p class="car-brand">BMW</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-gas-pump"></i> Petrol</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 3.2s 0-100</span>
+                    </div>
+                    <div class="car-price">₹1,19,00,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=250&fit=crop" alt="Porsche Cayenne" />
+                    <div class="car-badge">Featured</div>
+                </div>
+                <div class="car-info">
+                    <h3>Porsche Cayenne Turbo</h3>
+                    <p class="car-brand">Porsche</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-gas-pump"></i> Petrol</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 3.9s 0-100</span>
+                    </div>
+                    <div class="car-price">₹1,12,00,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=250&fit=crop" alt="Range Rover Sport" />
+                </div>
+                <div class="car-info">
+                    <h3>Range Rover Sport</h3>
+                    <p class="car-brand">Land Rover</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-leaf"></i> Hybrid</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 5.4s 0-100</span>
+                    </div>
+                    <div class="car-price">₹74,90,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=400&h=250&fit=crop" alt="Lamborghini Huracan" />
+                    <div class="car-badge">Featured</div>
+                </div>
+                <div class="car-info">
+                    <h3>Lamborghini Huracan EVO</h3>
+                    <p class="car-brand">Lamborghini</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-gas-pump"></i> Petrol</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 2.9s 0-100</span>
+                    </div>
+                    <div class="car-price">₹2,08,00,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=250&fit=crop" alt="Audi A8" />
+                </div>
+                <div class="car-info">
+                    <h3>Audi A8 L</h3>
+                    <p class="car-brand">Audi</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-leaf"></i> Hybrid</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 5.7s 0-100</span>
+                    </div>
+                    <div class="car-price">₹79,90,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=250&fit=crop" alt="Ferrari F8" />
+                    <div class="car-badge">Premium</div>
+                </div>
+                <div class="car-info">
+                    <h3>Ferrari F8 Tributo</h3>
+                    <p class="car-brand">Ferrari</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-gas-pump"></i> Petrol</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 2.9s 0-100</span>
+                    </div>
+                    <div class="car-price">₹2,75,00,000</div>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&h=250&fit=crop" alt="Jaguar F-Type" />
+                </div>
+                <div class="car-info">
+                    <h3>Jaguar F-Type R</h3>
+                    <p class="car-brand">Jaguar</p>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                        <span><i class="fas fa-gas-pump"></i> Petrol</span>
+                        <span><i class="fas fa-tachometer-alt"></i> 3.7s 0-100</span>
+                    </div>
+                    <div class="car-price">₹98,50,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="color: #4ecdc4; margin-bottom: 1rem;">Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 MG Road, Bangalore, Karnataka 560001</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@elitecars.in</p>
+                </div>
+                <div>
+                    <h4 style="color: #4ecdc4; margin-bottom: 1rem;">Showroom Hours</h4>
+                    <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                    <p>Sunday: 10:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <p>&copy; 2024 Elite Cars India. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-form">
+            <button class="close-btn" onclick="closeLogin()">&times;</button>
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                <i class="fas fa-user-circle"></i> Login to Elite Cars
+            </h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <p style="text-align: center; color: #666;">
+                    Don't have an account? <a href="#" style="color: #4ecdc4;">Sign up here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Car data with detailed information
+        const cars = [
+            {
+                name: "Tesla Model S Plaid",
+                brand: "Tesla",
+                price: "₹1,08,00,000",
+                year: 2024,
+                fuel: "Electric",
+                acceleration: "1.99s 0-100",
+                image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=400&h=250&fit=crop",
+                featured: true
+            },
+            {
+                name: "Mercedes AMG GT 63 S",
+                brand: "Mercedes-Benz",
+                price: "₹1,33,00,000",
+                year: 2024,
+                fuel: "Petrol",
+                acceleration: "3.1s 0-100",
+                image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=250&fit=crop",
+                featured: true
+            },
+            {
+                name: "BMW M8 Competition",
+                brand: "BMW",
+                price: "₹1,19,00,000",
+                year: 2024,
+                fuel: "Petrol",
+                acceleration: "3.2s 0-100",
+                image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=250&fit=crop",
+                featured: false
+            },
+            {
+                name: "Porsche Cayenne Turbo",
+                brand: "Porsche",
+                price: "₹1,12,00,000",
+                year: 2024,
+                fuel: "Petrol",
+                acceleration: "3.9s 0-100",
+                image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=250&fit=crop",
+                featured: true
+            },
+            {
+                name: "Range Rover Sport",
+                brand: "Land Rover",
+                price: "₹74,90,000",
+                year: 2024,
+                fuel: "Hybrid",
+                acceleration: "5.4s 0-100",
+                image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=250&fit=crop",
+                featured: false
+            },
+            {
+                name: "Lamborghini Huracan EVO",
+                brand: "Lamborghini",
+                price: "₹2,08,00,000",
+                year: 2024,
+                fuel: "Petrol",
+                acceleration: "2.9s 0-100",
+                image: "https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=400&h=250&fit=crop",
+                featured: true
+            },
+            {
+                name: "Audi A8 L",
+                brand: "Audi",
+                price: "₹79,90,000",
+                year: 2024,
+                fuel: "Hybrid",
+                acceleration: "5.7s 0-100",
+                image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=250&fit=crop",
+                featured: false
+            },
+            {
+                name: "Ferrari F8 Tributo",
+                brand: "Ferrari",
+                price: "₹2,75,00,000",
+                year: 2024,
+                fuel: "Petrol",
+                acceleration: "2.9s 0-100",
+                image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=250&fit=crop",
+                featured: true
+            },
+            {
+                name: "Jaguar F-Type R",
+                brand: "Jaguar",
+                price: "₹98,50,000",
+                year: 2024,
+                fuel: "Petrol",
+                acceleration: "3.7s 0-100",
+                image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&h=250&fit=crop",
+                featured: false
+            }
+        ];
+
+        // Search functionality
+        function searchCars() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const carsGrid = document.getElementById('carsGrid');
+            
+            const filteredCars = cars.filter(car => 
+                car.name.toLowerCase().includes(searchTerm) ||
+                car.brand.toLowerCase().includes(searchTerm) ||
+                car.price.includes(searchTerm)
+            );
+
+            if (filteredCars.length === 0) {
+                carsGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; color: white; padding: 2rem;">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h3>No cars found</h3>
+                        <p>Try searching with different keywords</p>
+                    </div>
+                `;
+                return;
+            }
+
+            carsGrid.innerHTML = filteredCars.map(car => `
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="${car.image}" alt="${car.name}" />
+                        ${car.featured ? '<div class="car-badge">Featured</div>' : ''}
+                    </div>
+                    <div class="car-info">
+                        <h3>${car.name}</h3>
+                        <p class="car-brand">${car.brand}</p>
+                        <div class="car-specs">
+                            <span><i class="fas fa-calendar"></i> ${car.year}</span>
+                            <span><i class="fas fa-${car.fuel === 'Electric' ? 'bolt' : car.fuel === 'Hybrid' ? 'leaf' : 'gas-pump'}"></i> ${car.fuel}</span>
+                            <span><i class="fas fa-tachometer-alt"></i> ${car.acceleration}</span>
+                        </div>
+                        <div class="car-price">${car.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Login modal functions
+        function openLogin() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (email && password) {
+                alert('Login successful! Welcome to Elite Cars.');
+                closeLogin();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        // Smooth scrolling
+        function scrollToCars() {
+            document.getElementById('cars').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal) {
+                closeLogin();
+            }
+        }
+
+        // Initialize search on page load
+        window.onload = function() {
+            searchCars();
+        }
+    </script>
+</body>
+</html>

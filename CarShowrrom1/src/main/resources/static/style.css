@@ -1,0 +1,46 @@
+/* Custom styles */
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-group-item-action {
+    transition: all 0.3s;
+}
+
+.list-group-item-action:hover {
+    background-color: #f8f9fa;
+    transform: translateX(5px);
+}
+
+.badge-action {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.badge-action:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.recent-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.recent-item:last-child {
+    border-bottom: none;
+}
+
+#carSearch {
+    max-width: 300px;
+}
+
+#auditLogsContainer {
+    max-height: 500px;
+    overflow-y: auto;
+}
