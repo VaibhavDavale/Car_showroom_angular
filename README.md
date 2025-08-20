@@ -277,7 +277,11 @@ For technical support, bug reports, or feature requests:
 - Include system information and error logs
 - Provide steps to reproduce any problems
 - Check existing issues before creating new ones
+🧑‍💻 Author
 
+Made with 💡 by Vaibhav Davale & Ajay Mali 📧 Email: davlevaibhav0@gmail.com 📧 Email: ajaymali0885@gmail.com
+
+📍 Location: India
 ---
 
 **Drive Your Business Forward with Our Car Showroom Solution! 🚗✨**
