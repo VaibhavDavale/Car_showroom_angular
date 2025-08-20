@@ -126,31 +126,31 @@ CarShowrrom1/
 ├── src/
 │   ├── main/
 │   │   ├── java/com/example/CarShowrrom1/
-│   │   │   ├── AdminController.java      # REST endpoints for admin operations
-│   │   │   ├── RustApiService.java       # External API integration service
-│   │   │   ├── CarDTO.java              # Car data transfer object
-│   │   │   ├── BookingDTO.java          # Booking data transfer object
-│   │   │   ├── AdminReport.java         # Report entity and model
-│   │   │   ├── RustApiException.java    # Custom exception handling
-│   │   │   ├── repository.java          # Data access layer
-│   │   │   └── CarShowrrom1Application.java # Main Spring Boot application
+│   │   │   ├── AdminController.java      
+│   │   │   ├── RustApiService.java       
+│   │   │   ├── CarDTO.java             
+│   │   │   ├── BookingDTO.java          
+│   │   │   ├── AdminReport.java         
+│   │   │   ├── RustApiException.java    
+│   │   │   ├── repository.java        
+│   │   │   └── CarShowrrom1Application.java 
 │   │   └── resources/
-│   │       └── application.properties    # Application configuration
-│   └── app/                             # Angular frontend application
-│       ├── components/                  # Reusable UI components
-│       │   ├── header/                  # Navigation header component
-│       │   └── footer/                  # Application footer
-│       ├── pages/                       # Main page components
-│       │   ├── admin/                   # Admin dashboard pages
-│       │   ├── cars/                    # Car listing and details
-│       │   └── bookings/                # Booking management pages
-│       ├── app.component.*              # Root application component
-│       └── app.routes.ts                # Application routing configuration
-├── pom.xml                              # Maven build configuration
-├── package.json                         # Node.js dependencies and scripts
-├── angular.json                         # Angular CLI configuration
-├── tsconfig.json                        # TypeScript configuration
-└── simple-server.js                     # Express development server
+│   │       └── application.properties   
+│   └── app/                            
+│       ├── components/                  
+│       │   ├── header/                  
+│       │   └── footer/                  
+│       ├── pages/                      
+│       │   ├── admin/                  
+│       │   ├── cars/                    
+│       │   └── bookings/                
+│       ├── app.component.*              
+│       └── app.routes.ts             
+├── pom.xml                       
+├── package.json                      
+├── angular.json                       
+├── tsconfig.json                        
+└── simple-server.js                     
 ```
 
 ## 🔌 API Endpoints
@@ -270,14 +270,6 @@ This project is licensed under the MIT License, allowing for both personal and c
 - Optimize Angular bundle size
 - Use database indexing for frequently queried fields
 
-### Support & Community
-
-For technical support, bug reports, or feature requests:
-- Create detailed issues in the project repository
-- Include system information and error logs
-- Provide steps to reproduce any problems
-- Check existing issues before creating new ones
-🧑‍💻 Author
 
 Made with 💡 by Vaibhav Davale & Ajay Mali 📧 Email: davlevaibhav0@gmail.com 📧 Email: ajaymali0885@gmail.com
 
